@@ -69,7 +69,7 @@ const ConferenceEvent = () => {
                 if(item.numberOfPeople){
                     itemForDisplay.numberOfPeople = numberOfPeople;
                 }
-                item.push(itemForDisplay);
+                items.push(itemForDisplay);
             }
         });
         return items;
@@ -119,13 +119,13 @@ const ConferenceEvent = () => {
             totalCost += item.cost * item.quantity;
           });
         } else if (section === "av"){
-            avitems.forEach((item) => {
+            avItems.forEach((item) => {
                 totalCost +=item.cost * item.quantity;
             });
         } else if(section === "meal"){
             mealItems.forEach((item) => {
                 if(item.selected){
-                    totalCost += item.cost * item.quantity;
+                    totalCost += item.cost * numberOfPeople;
                 }
             });
         }
@@ -146,7 +146,7 @@ const ConferenceEvent = () => {
     const totalCosts ={
         venue: venueTotalCost,
         av: avTotalCost,
-        melas: mealsTotalCost
+        meals: mealsTotalCost
     }
 
     return (
